@@ -41,6 +41,23 @@ exports.getAllBatch= async(req,res)=>{
 }
 
 //get batch by id
+
+
+exports.getBatchesByStudentId= async(req,res)=>{
+  BatchSchema.find({student:req.params.id}).populate('faculty').populate('student').populate('course').exec((err,data)=>{
+    if(err){
+      res.status(400).json({
+        msg:err.message
+      })
+    }
+    else{
+      res.status(200).json({
+        msg:"Batch data fetched",
+        data:data
+      })
+    }
+  })
+}
 exports.getBatchById= async(req,res)=>{
   BatchSchema.findById(req.params.id).populate('faculty').populate('student').populate('course').exec((err,data)=>{
     if(err){

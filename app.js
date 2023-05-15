@@ -19,12 +19,20 @@ const PaymentRoutes = require("./routes/PaymentRoutes");
 const AssignmentRoutes = require("./routes/AssignmentRoutes");
 const UploadRoutes = require("./routes/uploadRoutes");
 const BatchRoutes = require("./routes/faculty/BatchRoutes");
-const QuestionRoutes = require("./routes/question/QuestionRouters");
+const QuestionRoutes = require("./routes/exam/QuestionRoutes");
 const ExamRoutes = require("./routes/exam/ExamRoutes");
 const ExamQuesRoutes = require("./routes/exam_question/ExamQuesRoutes");
 const UserExamRoutes = require("./routes/user_exam/UserExamRoutes");
 const UserExamAnsRoutes = require("./routes/user_exam_ans/UserExamAnsRoutes");
 const ResultRoutes = require("./routes/result/resultRoutes");
+const ExamUserResultRoutes = require('./routes/exam/ExamUserResultRoutes')
+const ExamHistoryRoutes = require('./routes/exam/ExamHistoryRoutes')
+const ExamUserRoute = require('./routes/exam/ExamUserRoutes')
+const uploadRoutes = require('./routes/exam/UploadRoutes');
+const mailRoutes = require('./routes/mailerRoutes');
+
+
+
 
 
 
@@ -39,12 +47,19 @@ app.use("/assignment", AssignmentRoutes)
 app.use("/upload", UploadRoutes)
 app.use("/batch", BatchRoutes)
 app.use("/question", QuestionRoutes)
-app.use("/exam", ExamRoutes)
+//app.use("/exam", ExamRoutes)
 app.use("/examques",ExamQuesRoutes)
 app.use("/userexam", UserExamRoutes)
 app.use("/userexamans", UserExamAnsRoutes)
 app.use("/result", ResultRoutes)
 
+app.use('/examresult',ExamUserResultRoutes)
+app.use('/examhistory',ExamHistoryRoutes)
+app.use('/exam',ExamRoutes)
+app.use('/examuser',ExamUserRoute)
+app.use('/examquestion',QuestionRoutes)
+app.use('/upload1',uploadRoutes)
+app.use('/mail',mailRoutes)
 mongoose.connect("mongodb://127.0.0.1:27017/SMS-Nancy", (err) => {
   if (err) {
     console.log("Database not connected");
