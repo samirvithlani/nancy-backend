@@ -60,7 +60,7 @@ app.use('/examuser',ExamUserRoute)
 app.use('/examquestion',QuestionRoutes)
 app.use('/upload1',uploadRoutes)
 app.use('/mail',mailRoutes)
-mongoose.connect("mongodb://127.0.0.1:27017/SMS-Nancy", (err) => {
+mongoose.connect("mongodb+srv://samir:samir@cluster0.key63fx.mongodb.net/test", (err) => {
   if (err) {
     console.log("Database not connected");
   } else {
